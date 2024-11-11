@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     @Size(min = 5, message = "user name at least 5 characters")
     @JsonProperty("username")
