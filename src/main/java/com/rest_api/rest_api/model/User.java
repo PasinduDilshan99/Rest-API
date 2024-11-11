@@ -1,21 +1,30 @@
 package com.rest_api.rest_api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Entity(name = "user_details")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Size(min = 5, message = "user name at least 5 characters")
+    @JsonProperty("username")
     private String name;
     @NotNull(message = "age cannot be null")
     private int age;
     @NotNull(message = "address cannot be null")
     private String address;
-    @Past(message = "birthdate should be past")
+//    @Past(message = "birthdate should be past")
     private LocalDate birthDate;
 
     public User() {
